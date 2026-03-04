@@ -8,41 +8,19 @@ jobs:
     name: JOB1
     runs-on: ubuntu-latest
     steps:
-      - name: Runing Sigle command in JOB1
-        run: echo "Hi this is my first GitHub workflow"
-      - name: Checking OS Release for GitHub Hosted Runner
-        run: cat /etc/os-release
-      - name: Calling Sleep
-        run: sleep 20
-  job2:
-    name: JOB2
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checking the Hostname for Runner
-        run: hostname
-      - name: Running multiple commands
+      - name: step-1
+        run: 
+          pwd
+          ls -ltr
+          
+          hostname
+      - name: step-2 - checkout
+        uses: actions/checkout@v6.0.2
+      - name: step-3
         run: |
-          echo "Hi from Armaghan Kaviani"
-          echo "Current time is 'date'"
-          sleep 20
-  job3:
-    name: JOB3
-    needs: job1
-    runs-on: windows-latest
-    steps:
-      - name: Job with Single Dependency
-        run: sleep 10
-      - name: Checking Runner Info
-        shell: pwsh
-        run: get-computerinfo
+           pwd
+           ls -ltr
+           hostname
         
-  job4:
-    name: JOB4
-    needs: [job1, job2, job3]
-    runs-on: macos-latest
-    steps:
-      - name: Job for multiple Dependencies
-        run: sleep 10
-      - name: Checking Runner Info
-        run: sw_vers
-    
+
+
