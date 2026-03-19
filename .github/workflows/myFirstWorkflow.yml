@@ -57,7 +57,7 @@ jobs:
        - name: Download single file artifact
          uses: actions/download-artifact@v7.0.0
          with:
-           name: single_file
+           name: Single_file
        - name: Checking current directory post download
          run: |
            pwd
